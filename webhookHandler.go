@@ -3,7 +3,6 @@ package main
 import (
 	"log"
 	"net/http"
-	"os"
 )
 
 func webhookHandler(w http.ResponseWriter, r *http.Request) {
@@ -13,8 +12,8 @@ func webhookHandler(w http.ResponseWriter, r *http.Request) {
 	log.Print("Github Event: ")
 	log.Print(event)
 
-	apiKey := os.Getenv("API_KEY")
-	tenantUrl := os.Getenv("TENANT_URL")
+	apiKey := ""
+	tenantUrl := ""
 	
 	items, err := getItem(apiKey, tenantUrl, "Bugs")
 	if err != nil {
